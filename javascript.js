@@ -6,18 +6,28 @@ const questionElement = document.getElementById("question")
 const AnswerButtonsElement = document.getElementById("Answer-grid");
 var timeEL = document.querySelector(".time")
 
+const choice1element = documentdocument.getElementById("choice1")
+const choice2element = documentdocument.getElementById("choice2")
+const choice3element = documentdocument.getElementById("choice3")
+const choice4element = documentdocument.getElementById("choice4")
 // need to create an array
 
 question = [
-{quuestion: }
-]
+{question: "What does CSS stand for?", choice1: "colorful super stuff", choice2: "IDK", choice3: "cascading style sheet", choice4: "color selected styles", correctAnswer: "cascading style sheet" },
+
+{question: "To close a function, you need?", choice1: "{}", choice2: "[]", choice3: "()", choice4: "''", correctAnswer: "()" },
+
+{question: "", choice1: "{}", choice2: "[]", choice3: "()", choice4: "''", correctAnswer: "()" }]
 // need to create a question bank
 
-startButton.addEventListener("click", QuizBegin)
+startButton.addEventListener('click', function()  {
+
+
+}) 
 
 // this uses event listener to tie countdown when clicked
 
-startButton.addEventListener("click", countdown)
+startButton.addEventListener("click", function countdown() {
 console.log('started')
 
 
@@ -28,7 +38,14 @@ startButton.add("hide")
 
 next_question()
 }
+}); 
 
+function next_question()  {
+
+
+}
+
+// setting up the timer for the code
 function countdown ()  {
 var timerinterval =setinterval(function() {
 

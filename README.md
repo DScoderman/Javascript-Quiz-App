@@ -1,26 +1,14 @@
 # Javascript-Quiz-App
 
+## Description
+Quiz game made to help track efforts in understanding javascript!
+## Installation
+NA
 
-## User Story
+## Usage
 
-```
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
+Users click on the start button to begin the quiz. A prompt box appears once shown and says "quiz started", indicating a start to the game. A  timer begins counting down on the top left corner of the screen. A question is displayed. 4 options are available and when the user clicks the correct one, a prompt appears indicating it is right. when a question is wrong, the timer is reduced and the user moves to the next question. 
 
-## Acceptance Criteria
+##### Tools used
+VS code, Gitbash
 
-```
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and my score
-```
