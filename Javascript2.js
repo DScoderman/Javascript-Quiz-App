@@ -57,6 +57,11 @@ function startGame() {
 
 function showQuestion() {
     const currentQuestion = questionData[currentQuestionIndex]
+
+    choice1element.removeEventListener('click', checkAnswerHandler, false);
+    choice2element.removeEventListener('click', checkAnswerHandler, false);
+    choice3element.removeEventListener('click', checkAnswerHandler, false);
+    choice4element.removeEventListener('click', checkAnswerHandler, false);
     
     questionElement.innerText = currentQuestion.question
     choice1element.innerText = currentQuestion.choice1
@@ -110,12 +115,8 @@ function showNextQuestion() {
 }
 
 function checkAnswerHandler(evt) {
-  checkAnswer(evt.currentTarget.currentQuestion, evt.currentTarget.choice, evt.currentTarget);
-
-  choice1element.removeEventListener('click', checkAnswer, false);
-  choice2element.removeEventListener('click', checkAnswer, false);
-  choice3element.removeEventListener('click', checkAnswer, false);
-  choice4element.removeEventListener('click', checkAnswer, false);
+  let choiceelement = evt.currentTarget;
+  checkAnswer(choiceelement.currentQuestion, choiceelement.choice, choiceelement);
 }
 
   function checkAnswer(question, selectedAnswer, selectedButton) {    
