@@ -65,18 +65,21 @@ function showQuestion() {
     choice4element.innerText = currentQuestion.choice4
   
     // add event listeners to answer buttons
-    choice1element.addEventListener('click', () => {
-      checkAnswer(currentQuestion, currentQuestion.choice1, choice1element)
-    })
-    choice2element.addEventListener('click', () => {
-      checkAnswer(currentQuestion, currentQuestion.choice2, choice2element)
-    })
-    choice3element.addEventListener('click', () => {
-      checkAnswer(currentQuestion, currentQuestion.choice3, choice3element)
-    })
-    choice4element.addEventListener('click', () => {
-      checkAnswer(currentQuestion, currentQuestion.choice4, choice4element)
-    })
+    choice1element.addEventListener('click', checkAnswerHandler, false);
+    choice1element.currentQuestion = currentQuestion;
+    choice1element.choice = currentQuestion.choice1;
+
+    choice2element.addEventListener('click', checkAnswerHandler, false)
+    choice2element.currentQuestion = currentQuestion;
+    choice2element.choice = currentQuestion.choice2;
+
+    choice3element.addEventListener('click', checkAnswerHandler, false)
+    choice3element.currentQuestion = currentQuestion;
+    choice3element.choice = currentQuestion.choice3;
+
+    choice4element.addEventListener('click', checkAnswerHandler, false)
+    choice4element.currentQuestion = currentQuestion;
+    choice4element.choice = currentQuestion.choice4;
   }
   
   // event listener for next button
@@ -106,7 +109,16 @@ function showNextQuestion() {
   choice4element.disabled = false
 }
 
-  function checkAnswer(question, selectedAnswer, selectedButton) {
+function checkAnswerHandler(evt) {
+  checkAnswer(evt.currentTarget.currentQuestion, evt.currentTarget.choice, evt.currentTarget);
+
+  choice1element.removeEventListener('click', checkAnswer, false);
+  choice2element.removeEventListener('click', checkAnswer, false);
+  choice3element.removeEventListener('click', checkAnswer, false);
+  choice4element.removeEventListener('click', checkAnswer, false);
+}
+
+  function checkAnswer(question, selectedAnswer, selectedButton) {    
     if (selectedAnswer === question.correctAnswer) {
       selectedButton.classList.add('correct')
       alert("Correct!")
