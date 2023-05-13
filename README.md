@@ -13,3 +13,6 @@ Users click on the start button to begin the quiz. A prompt box appears once sho
 ## Tools used
 VS code, Gitbash
 
+## Additional Notes: 
+
+Link to quiz app: https://github.com/DScoderman/Javascript-Quiz-App
