@@ -30,12 +30,28 @@ const questionData = [
     correctAnswer: "()"
   },
   {
-    question: "What is the capital of France?",
-    choice1: "Madrid",
-    choice2: "Paris",
-    choice3: "Berlin",
-    choice4: "London",
-    correctAnswer: "Paris"
+    question: "What symbol do you use to indicate your spot in an array?",
+    choice1: "Arr",
+    choice2: "-a-",
+    choice3: "i",
+    choice4: "ray",
+    correctAnswer: "i"
+  },
+  {
+    question: "What does JSON stand for?",
+    choice1: "javaScript Object Notation,",
+    choice2: "JavaScript Oriented Notation",
+    choice3: "Java Syntax Origin Nodes,",
+    choice4: "Java Synapse Offline Nodetation",
+    correctAnswer: "javaScript Object Notation,"
+  },
+  {
+    question: "What does HTML stand for?",
+    choice1: "HyperText Markup Language",
+    choice2: "High Transferring Module Lines",
+    choice3: "Hyper Toxcology Marketing Language",
+    choice4: "Hyper Tank Meta Line",
+    correctAnswer: "HyperText Markup Language"
   }
 ]
 
@@ -43,16 +59,17 @@ let currentQuestionIndex = 0
 let score = 0
 let timeLeft = 60
 
+let countdownInterval;
+
 // EVENT LISTENER TO GET THE GAME GOING
 startButton.addEventListener('click', startGame)
 // CODE FOR THE STARTGAME
 function startGame() {
-
   console.log('LETS ROLL!')
   startButton.classList.add('hide')
   question_containerElement.classList.remove('hide')
   showQuestion()
-  countdown()
+  countdownInterval = countdown()
 }
 
 function showQuestion() {
@@ -142,8 +159,10 @@ function checkAnswerHandler(evt) {
   }
   
   function endGame() {
+    clearInterval(countdownInterval);
     question_containerElement.classList.add('hide')
     alert(`You scored ${score} out of ${questionData.length}!`)
+    document.querySelector("#ScoreTrack").classList.remove('hide')
     resetgame();
   }
   
@@ -155,19 +174,36 @@ function resetgame(){
 }
 
 function countdown() {
-    // update time left every second
-    const timer = setInterval(() => {
-      timeLeft--;
-      updateTime();
-      if (timeLeft === 0) {
-        // stop timer and end game when time is up
-        clearInterval(timer);
-        endGame();
-      }
-    }, 1000);
-  }
+  // update time left every second
+  return setInterval(() => {
+    timeLeft--;
+    updateTime();
+    if (timeLeft === 0) {
+      // stop timer and end game when time is up
+      clearInterval(countdownInterval);
+      endGame();
+    }
+  }, 1000);
+}
 
   function updateTime() {
     timeEL.textContent = `Time: ${timeLeft}`;
   }
   
+  document.querySelector("#inputNameButton").addEventListener("click", function () {
+  var initals = document.querySelector("#inputName").value
+  var playerhistory =  JSON.parse(localStorage.getItem("playerhistory")) || []
+  var playerObject = {
+    player: initals,
+    score: score,
+  }
+  playerhistory.push(playerObject)
+  localStorage.setItem("playerhistory", JSON.stringify(playerhistory))
+for (var i=0; i < playerhistory.length;
+  i++)
+  
+  {var li= document.createElement("li")
+li.textContent = playerhistory[i].player
+document.querySelector(".score_number").append(li)
+}
+  })

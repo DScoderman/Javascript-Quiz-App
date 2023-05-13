@@ -38,4 +38,6 @@ background-color: rgb(115, 203, 255);
 }
 
 
-  
+.hide {
+    display:none;
+}
